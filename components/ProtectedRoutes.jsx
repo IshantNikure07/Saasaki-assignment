@@ -8,9 +8,9 @@ import Loading from "./Loading";
 const ProtectedRoutes = ({ children }) => {
   const [user, loading] = useAuthState(auth);
   const router = useRouter();
-  const userSession = sessionStorage.getItem("user")
-
+  
   useEffect(() => {
+    const userSession = sessionStorage.getItem("user")
     if (!loading && !user && !userSession) {
       router.push("/login");
     }

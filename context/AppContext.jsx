@@ -21,22 +21,50 @@ export const AppContextProvider = (props) => {
     const [cartItems, setCartItems] = useState({})
     const [productById, setProductById] = useState([])
     const [filteredData , setFilteredData] = useState([])
-    const [dark , setDark] = useState(()=>{
-        const storedTheme = sessionStorage.getItem("dark")
-        return storedTheme === "true";
-    })
-    const [cart, setCart] = useState(() => {
+    const [dark , setDark] = useState(false)
+    const [cart, setCart] = useState([])
+    const  [wishlistIds, setWishlistIds] = useState([])
+    const  [orders, setOrders] = useState([])
+    // const [dark , setDark] = useState(()=>{
+    //     const storedTheme = sessionStorage.getItem("dark")
+    //     return storedTheme === "true";
+    // })
+    // const [cart, setCart] = useState(() => {
+    //     const storedCart = localStorage.getItem("cart");
+    //     return storedCart ? JSON.parse(storedCart) : [];
+    // });
+    // const [wishlistIds, setWishlistIds] = useState(() => {
+    //     const storedList = localStorage.getItem('wishlist');
+    //     return storedList ? JSON.parse(storedList) : [];
+    // });
+    //  const [orders, setOrders] = useState(() => {
+    //     const storedOrders = localStorage.getItem('orders');
+    //     return storedOrders ? JSON.parse(storedOrders) : [];
+    // });
+
+    useEffect(() => {
+        const storedTheme = sessionStorage.getItem("dark");
+        if (storedTheme !== null) {
+          setDark(storedTheme === "true");
+        }
+      }, []);
+
+      useEffect(() => {
         const storedCart = localStorage.getItem("cart");
-        return storedCart ? JSON.parse(storedCart) : [];
-    });
-    const [wishlistIds, setWishlistIds] = useState(() => {
-        const storedList = localStorage.getItem('wishlist');
-        return storedList ? JSON.parse(storedList) : [];
-    });
-     const [orders, setOrders] = useState(() => {
-        const storedOrders = localStorage.getItem('orders');
-        return storedOrders ? JSON.parse(storedOrders) : [];
-    });
+        if (storedCart) {
+          setCart(JSON.parse(storedCart));
+        }
+      
+        const storedWishlist = localStorage.getItem("wishlist");
+        if (storedWishlist) {
+          setWishlistIds(JSON.parse(storedWishlist));
+        }
+      
+        const storedOrders = localStorage.getItem("orders");
+        if (storedOrders) {
+          setOrders(JSON.parse(storedOrders));
+        }
+      }, []);
 
     const fetchProductData = async () => {
         // setProducts(productsDummyData)

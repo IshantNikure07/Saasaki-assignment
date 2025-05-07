@@ -20,8 +20,8 @@ const Home = () => {
   const {dark} = useAppContext()
   const router = useRouter()
   console.log("user" , user)
-  const userSession = sessionStorage.getItem("user")
-
+  // const userSession = sessionStorage.getItem("user")
+  
   useEffect(() => {
     if (!loading && !user) {
       router.push("/login");
