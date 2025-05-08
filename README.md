@@ -34,7 +34,14 @@ Welcome to **B classy** , a fully functional and responsive e-commerce website b
 
 git clone https://github.com/IshantNikure07/Saasaki-assignment.git
 
-# Repository Link = https://github.com/IshantNikure07/Saasaki-assignment
+### 2. Run  command on terminal
+npm i
 
-# Project Link  =  https://saakiassignment-b-classy.netlify.app
+## 🛠️ Links
+
+### 1. Repository Link 
+ https://github.com/IshantNikure07/Saasaki-assignment
+
+### 2.  Project Link  
+  https://saakiassignment-b-classy.netlify.app
 
