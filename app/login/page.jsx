@@ -17,14 +17,16 @@ const Login = () => {
     e.preventDefault();
     try {
       const res = await signInWithEmailAndPassword(email, password);
-      if (res) {
+      if (res?.user) {
         
         console.log("res:", res); // should now contain the userCredential object
         sessionStorage.setItem("user" , true)
         setEmail("");
         setPassword("");
-        toast.success("Login successful!");
         router.push("/");
+        toast.success("Login successful!");
+      }else{
+        toast.error("Invalid Credentials")
       }
     } catch (error) {
       console.error("Login error:", error);

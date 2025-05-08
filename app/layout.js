@@ -15,7 +15,7 @@ export default function RootLayout({ children }) {
       <html lang="en" suppressHydrationWarning>
         <body className={`${outfit.className} antialiased text-gray-700`}
          cz-shortcut-listen="true" >
-              <Toaster />
+              <Toaster position="top-right" autoClose={5000} />
             <AppContextProvider>
               
               {children}
