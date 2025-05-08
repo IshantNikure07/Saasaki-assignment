@@ -19,21 +19,38 @@ const OrderSummary = () => {
     setIsDropdownOpen(false);
   };
 
-  const createOrder = async () => {
-    const newOrders = [...orders, ...cart];
+  // const createOrder = async () => {
+  //   const newOrders = [...orders, ...cart];
 
-    setOrders(newOrders);
-    localStorage.setItem("orders", JSON.stringify(newOrders)); // 🛡️ Save immediately
+  //   setOrders(newOrders);
+  //   localStorage.setItem("orders", JSON.stringify(newOrders)); // 🛡️ Save immediately
   
-    // setCart([]);
-    // localStorage.setItem("cart", JSON.stringify([])); // 🛡️ Clear cart immediately
+  //   // setCart([]);
+  //   // localStorage.setItem("cart", JSON.stringify([])); // 🛡️ Clear cart immediately
+  
+  //   router.push("/order-placed");
+  // }
+
+  const createOrder = async () => {
+    const timestamp = Date.now();
+  
+    // Har cart item me date add karo
+    const cartWithDate = cart.map(item => ({
+      ...item,
+      date: timestamp,
+    }));
+  
+    const newOrders = [...orders, ...cartWithDate];
+  
+    setOrders(newOrders);
+    localStorage.setItem("orders", JSON.stringify(newOrders));
+  
+    setCart([]);
+    localStorage.setItem("cart", JSON.stringify([]));
   
     router.push("/order-placed");
-  }
-
-  // useEffect(() => {
-  //         localStorage.setItem("orders", JSON.stringify(orders));
-  //       }, [orders]);
+  };
+  
 
   useEffect(() => {
     fetchUserAddresses();
