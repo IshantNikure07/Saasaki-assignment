@@ -57,7 +57,7 @@ const MyOrders = () => {
                                         <span>{`8788407623`}</span>
                                     </p>
                                 </div>
-                                <p className="font-medium my-auto">{currency}{order.amount}</p>
+                                <p className="font-medium my-auto">{currency}{order.price * order.quantity}</p>
                                 <div>
                                     <p className="flex flex-col">
                                         <span>Method : COD</span>
