@@ -20,14 +20,20 @@ const OrderSummary = () => {
   };
 
   const createOrder = async () => {
-      await setOrders(cart)
-       router.push("/order-placed")
-       setCart([])
+    const newOrders = [...orders, ...cart];
+
+    setOrders(newOrders);
+    localStorage.setItem("orders", JSON.stringify(newOrders)); // 🛡️ Save immediately
+  
+    // setCart([]);
+    // localStorage.setItem("cart", JSON.stringify([])); // 🛡️ Clear cart immediately
+  
+    router.push("/order-placed");
   }
 
-  useEffect(() => {
-          localStorage.setItem("orders", JSON.stringify(orders));
-        }, [orders]);
+  // useEffect(() => {
+  //         localStorage.setItem("orders", JSON.stringify(orders));
+  //       }, [orders]);
 
   useEffect(() => {
     fetchUserAddresses();

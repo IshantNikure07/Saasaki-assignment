@@ -23,24 +23,8 @@ export const AppContextProvider = (props) => {
     const [filteredData , setFilteredData] = useState([])
     const [dark , setDark] = useState(false)
     const [cart, setCart] = useState([])
-    const  [wishlistIds, setWishlistIds] = useState([])
-    const  [orders, setOrders] = useState([])
-    // const [dark , setDark] = useState(()=>{
-    //     const storedTheme = sessionStorage.getItem("dark")
-    //     return storedTheme === "true";
-    // })
-    // const [cart, setCart] = useState(() => {
-    //     const storedCart = localStorage.getItem("cart");
-    //     return storedCart ? JSON.parse(storedCart) : [];
-    // });
-    // const [wishlistIds, setWishlistIds] = useState(() => {
-    //     const storedList = localStorage.getItem('wishlist');
-    //     return storedList ? JSON.parse(storedList) : [];
-    // });
-    //  const [orders, setOrders] = useState(() => {
-    //     const storedOrders = localStorage.getItem('orders');
-    //     return storedOrders ? JSON.parse(storedOrders) : [];
-    // });
+    const [wishlistIds, setWishlistIds] = useState([])
+    const [orders, setOrders] = useState([])
 
     useEffect(() => {
         const storedTheme = sessionStorage.getItem("dark");
@@ -65,6 +49,22 @@ export const AppContextProvider = (props) => {
           setOrders(JSON.parse(storedOrders));
         }
       }, []);
+
+      useEffect(() => {
+        localStorage.setItem("cart", JSON.stringify(cart));
+        console.log("cart" , cart)
+      }, [cart]);
+      
+      useEffect(() => {
+        localStorage.setItem("wishlist", JSON.stringify(wishlistIds));
+        console.log("wish" , wishlistIds)
+      }, [wishlistIds]);
+      
+      useEffect(() => {
+        localStorage.setItem("orders", JSON.stringify(orders));
+        console.log("orders" , orders)
+      }, [orders]);
+      
 
     const fetchProductData = async () => {
         // setProducts(productsDummyData)
@@ -210,7 +210,7 @@ export const AppContextProvider = (props) => {
         addToCart, reduceCartQuantity,
         getCartCount, getCartAmount,
         placeOrder, orders, setOrders ,
-        filteredData
+        filteredData , setFilteredData
     }
 
     return (

@@ -8,7 +8,7 @@ import ProtectedRoutes from "@/components/ProtectedRoutes";
 
 const AllProducts = () => {
 
-    const { products, setProducts, fetchProductData , wishlistIds , dark , filteredData} = useAppContext();
+    const { products, setProducts, fetchProductData , wishlistIds , dark , filteredData , setFilteredData} = useAppContext();
     // const [filteredData , setFilteredData] = useState(products)
     
     useEffect(() => {
@@ -35,10 +35,10 @@ const AllProducts = () => {
        
     };
 
-     useEffect(() => {
-            localStorage.setItem("wishlist", JSON.stringify(wishlistIds));
-            console.log("wishlistIds" , wishlistIds)
-          }, [wishlistIds]);
+    //  useEffect(() => {
+    //         localStorage.setItem("wishlist", JSON.stringify(wishlistIds));
+    //         console.log("wishlistIds" , wishlistIds)
+    //       }, [wishlistIds]);
 
     return (
         <ProtectedRoutes>

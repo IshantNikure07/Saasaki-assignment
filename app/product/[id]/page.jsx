@@ -19,9 +19,9 @@ const Product = () => {
 
     const { products, router,cart , addToCart, placeOrder , fetchProductData , dark } = useAppContext();
 
-    useEffect(() => {
-        localStorage.setItem("cart", JSON.stringify(cart));
-      }, [cart]);
+    // useEffect(() => {
+    //     localStorage.setItem("cart", JSON.stringify(cart));
+    //   }, [cart]);
       
 
     const fetchProductDataById = async (id) => {

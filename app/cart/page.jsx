@@ -11,9 +11,9 @@ const Cart = () => {
 
   const { products, router, cartItems, addToCart,removeCartItem, reduceCartQuantity , updateCartQuantity, getCartCount , cart , dark } = useAppContext();
 
-   useEffect(() => {
-          localStorage.setItem("cart", JSON.stringify(cart));
-        }, [cart]);
+  //  useEffect(() => {
+  //         localStorage.setItem("cart", JSON.stringify(cart));
+  //       }, [cart]);
 
   return (
     <ProtectedRoutes>

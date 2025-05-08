@@ -6,12 +6,15 @@ import { useEffect } from 'react'
 
 const OrderPlaced = () => {
 
-  const { router , dark} = useAppContext()
+  const { router , dark , setCart} = useAppContext()
 
   useEffect(() => {
     setTimeout(() => {
       router.push('/my-orders')
     }, 2000)
+
+    setCart([]);
+    // localStorage.setItem("cart", JSON.stringify([])); // 🛡️ Clear cart immediately
   }, [])
 
   return (
